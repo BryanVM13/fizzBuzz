@@ -9,6 +9,9 @@ class FizzBuzzTest extends TestCase
 {
     private $fizzBuzz;
 
+
+
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -20,26 +23,37 @@ class FizzBuzzTest extends TestCase
         //Arrange = Preparer tout ce qu'on a besoin pour ecrire notre test
 
         //Act = executer la fonction qu'on souhaite tester
-        $actual = $this->fizzBuzz->count(1);
+        $actual = $this->actCount(1);
         //Assert
         $this->assertEquals("1",$actual);
     }
 
     public function test_count_given2_shouldReturn2(){
 
-        $actual = $this->fizzBuzz->count(2);
+        $actual = $this->actCount(2);
         $this->assertEquals("2",$actual);
     }
 
-    public function test_count_given3_shouldReturn3(){
+    public function test_count_given3_shouldReturnFizz(){
 
-        $actual = $this->fizzBuzz->count(3);
+        $actual = $this->actCount(3);
         $this->assertEquals("Fizz", $actual);
     }
 
     public function test_count_given4_shouldReturn4(){
 
-        $actual = $this->fizzBuzz->count(4);
+        $actual = $this->actCount(4);
         $this->assertEquals("4",$actual);
+    }
+
+    public function test_count_given5_shouldReturnBuzz(){
+
+        $actual = $this->actCount(5);
+        $this->assertEquals("Buzz", $actual);
+    }
+
+    private function actCount(int $int): string
+    {
+        return $this->fizzBuzz->count($int);
     }
 }
